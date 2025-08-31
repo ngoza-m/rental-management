@@ -1,0 +1,14 @@
+<%= simple_form_for model: property do |f| %>
+
+    <% if @property.errors.any? %>
+        <div id="error_explanation" class="error-message">
+        <p>Oops! Something went wrong!</p>
+        </div>
+    <% end %>
+
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    <%= f.input :rent %>
+    <%= f.submit %>
+<% end %>

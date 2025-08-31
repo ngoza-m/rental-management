@@ -1,0 +1,9 @@
+<div>
+    <h2> <%= @property.name %> </h2>
+    <p> <%= @property.address %> </p>
+    <p> <%= @property.description %> </p>
+    <p> Rent: $<%= @property.rent %> </p>
+</div>
+
+<p> Back to all <%= link_to 'properties', properties_path %></p>
+<p> Edit this property <%= link_to 'Edit', edit_property_path(@property) %></p>

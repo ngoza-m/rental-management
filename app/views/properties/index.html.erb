@@ -1,0 +1,11 @@
+<div class="container">
+    <p>Create <%= link_to 'New Property', new_property_path %></p>
+    <%= @properties.each do |property| %>
+        <h2> <%= property.name %> </h2>
+        <p> <%= property.address %> </p>
+        <p> <%= property.description %> </p>
+        <p> Rent: ZK<%= property.rent %> </p>
+        <p> View this property <%= link_to 'View', property_path(property) %></p>
+        <p> Delete this property <%= link_to 'Delete', property_path(property), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
+</div>
