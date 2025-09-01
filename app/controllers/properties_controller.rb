@@ -15,6 +15,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    @property.landlord = current_user
     if @property.save
       redirect_to @property
     else
