@@ -53,3 +53,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# added gem files
+gem "bootstrap", "~> 5.3"
+gem "simple_form"
+gem "sassc-rails"
+gem "devise"

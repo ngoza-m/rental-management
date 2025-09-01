@@ -1,0 +1,11 @@
+<div>
+    <h2> <%= @property.name %> </h2>
+    <p> <%= @property.address %> </p>
+    <p> <%= @property.description %> </p>
+    <p> Rent: ZK<%= @property.rent %> </p>
+</div>
+
+<p> Back to all <%= link_to 'properties', properties_path %></p>
+<p> Edit this property <%= link_to 'Edit', edit_property_path(@property) %></p>
+<p> Delete this property <%= link_to 'Delete', property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+    

@@ -1,0 +1,12 @@
+<div class="container mt-3">
+    <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
+    <p>Create <%= link_to 'New Property', new_property_path %></p>
+    <p> View <%= link_to 'Dashboard', dashboard_path%>
+    <% @properties.each do |property| %>
+        <h2> <%= property.name %> </h2>
+        <p> <%= property.address %> </p>
+        <p> <%= property.description %> </p>
+        <p> Rent: ZK<%= property.rent %> </p>
+        <p> View this property <%= link_to 'View', property_path(property) %></p>
+    <% end %>
+</div>
