@@ -1,24 +1,27 @@
-<h1>Pages#dashboard</h1>
+<h1>Dashboard</h1>
 <p> Welcome <%= @current_user.email%></p>
+<p>Create <%= link_to 'New Property', new_property_path %></p>
+<p>View <%= link_to 'My Tenants', tenants_path %></p>
 
-<h3 style="margin-bottom: 40px;">Manage My Venues</h3>
-<table class="table table-bordered table-hover table-responsive">
-            <thead class="thead-dark">
-                <tr class="table-active">
-                    <!-- <th></th> -->
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Rent</th>
-                    <th> # </th>
-                </tr>
-                </thead>
-    <% @properties.each do |property| %>
-        <tr>
-                <td class="bg-white"> <%= property.name %>  </th>
-                <td class="bg-white">   <%= property.address %> </td>
-                <td class="bg-white"> ZK<%= property.rent %> </td>
-                <td class="bg-white"> <%= link_to "View", property_path(property) %> </td>
-        </tr>
-        <% end %>
-</table>
-    
+<% if @properties.empty? == false %>
+    <h3 style="margin-bottom: 40px;">Manage My Properties</h3>
+    <table class="table table-bordered table-hover table-responsive">
+                <thead class="thead-dark">
+                    <tr class="table-active">
+                        <!-- <th></th> -->
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Rent</th>
+                        <th> # </th>
+                    </tr>
+                    </thead>
+        <% @properties.each do |property| %>
+            <tr>
+                    <td class="bg-white"> <%= property.name %>  </th>
+                    <td class="bg-white">   <%= property.address %> </td>
+                    <td class="bg-white"> ZK<%= property.rent %> </td>
+                    <td class="bg-white"> <%= link_to "View", property_path(property) %> </td>
+            </tr>
+            <% end %>
+    </table>
+<% end %>    

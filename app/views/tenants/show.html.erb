@@ -1,0 +1,13 @@
+<div>
+    <h2> <%= @tenant.name %> </h2>
+    <p> ID Number: <%= @tenant.id_number %> </p>
+    <p> Contact: <%= @tenant.contact %> </p>
+    <p> Emergency Contact: <%= @tenant.emergency_contact %> </p>
+</div>
+
+<p> Back to all <%= link_to 'tenants', tenants_path %></p>
+
+<% if @tenant.landlord == current_user %>
+    <p> Edit this tenant <%= link_to 'Edit', edit_tenant_path(@tenant) %></p>
+    <p> Delete this tenant <%= link_to 'Delete', tenant_path(@tenant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+<% end %>   

@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "properties#index"
   resources :properties
+  resources :tenants
   get "dashboard", to: "pages#dashboard"
 end

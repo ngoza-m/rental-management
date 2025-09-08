@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_01_062235) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_08_115052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "leases", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "rent_amount", precision: 10, scale: 2
+    t.decimal "security_deposit", precision: 10, scale: 2
+    t.string "payment_frequency"
+    t.bigint "property_id", null: false
+    t.bigint "tenant_id", null: false
+    t.bigint "landlord_id", null: false
+    t.index ["landlord_id"], name: "index_leases_on_landlord_id"
+    t.index ["property_id"], name: "index_leases_on_property_id"
+    t.index ["tenant_id"], name: "index_leases_on_tenant_id"
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
@@ -23,6 +39,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_01_062235) do
     t.text "description"
     t.bigint "landlord_id"
     t.index ["landlord_id"], name: "index_properties_on_landlord_id"
+  end
+
+  create_table "tenants", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "id_number"
+    t.string "contact"
+    t.string "emergency_contact"
+    t.bigint "landlord_id"
+    t.index ["landlord_id"], name: "index_tenants_on_landlord_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,5 +64,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_01_062235) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "leases", "properties"
+  add_foreign_key "leases", "tenants"
+  add_foreign_key "leases", "users", column: "landlord_id"
   add_foreign_key "properties", "users", column: "landlord_id"
+  add_foreign_key "tenants", "users", column: "landlord_id"
 end

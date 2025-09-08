@@ -1,0 +1,14 @@
+<%= simple_form_for @tenant do |f| %>
+
+    <% if @tenant.errors.any? %>
+        <div id="error_explanation" class="error-message">
+        <p>Oops! Something went wrong!</p>
+        </div>
+    <% end %>
+
+    <%= f.input :name %>
+    <%= f.input :id_number %>
+    <%= f.input :contact %>
+    <%= f.input :emergency_contact %>
+    <%= f.submit %>
+<% end %>
