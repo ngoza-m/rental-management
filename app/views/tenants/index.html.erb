@@ -1,0 +1,27 @@
+<h1>Tenants List</h1>
+
+<p>Add <%= link_to 'New Tenant', new_tenant_path %></p>
+
+<h3 style="margin-bottom: 40px;">Manage My Tenants</h3>
+<table class="table table-bordered table-hover table-responsive">
+            <thead class="thead-dark">
+                <tr class="table-active">
+                    <!-- <th></th> -->
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Contact</th>
+                    <th>Emergency Contact</th>
+                    <th> # </th>
+                </tr>
+                </thead>
+    <% @tenants.each do |tenant| %>
+        <tr>
+                <td class="bg-white"> <%= tenant.name %>  </td>
+                <td class="bg-white">   <%= tenant.id_number %> </td>
+                <td class="bg-white"> <%= tenant.contact %> </td>
+                <td class="bg-white"> <%= tenant.emergency_contact %> </td>
+                <td class="bg-white"> <%= link_to "View", tenant_path(tenant) %> </td>
+        </tr>
+    <% end %>
+</table>
+

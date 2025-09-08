@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :properties, foreign_key: :landlord_id
+  has_many :tenants, foreign_key: :landlord_id
 end
