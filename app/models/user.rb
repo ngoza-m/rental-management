@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :properties, foreign_key: :landlord_id
   has_many :tenants, foreign_key: :landlord_id
+  has_many :leases, through: :tenants
 end

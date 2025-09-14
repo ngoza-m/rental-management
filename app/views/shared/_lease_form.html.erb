@@ -1,0 +1,17 @@
+<%= simple_form_for [@tenant, @lease] do |f| %>
+
+    <% if @lease.errors.any? %>
+        <div id="error_explanation" class="error-message">
+        <p>Oops! Something went wrong!</p>
+        </div>
+    <% end %>
+
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :property_id, as: :select, collection: Property.all.collect { |p| [p.name, p.id] }, prompt: "Select Property" %>
+    <%= f.input :rent_amount %>
+    <%= f.input :security_deposit %>
+    <%= f.input :payment_frequency %>
+
+    <%= f.submit %>
+<% end %>

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "properties#index"
   resources :properties
-  resources :tenants
+  resources :tenants do
+    resources :leases, only: [:new, :create, :show]
+  end
   get "dashboard", to: "pages#dashboard"
 end

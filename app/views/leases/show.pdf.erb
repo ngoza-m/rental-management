@@ -1,0 +1,51 @@
+<div class="header">
+    <h1>LEASE AGREEMENT</h1>
+    <p>Lease ID: #<%= @lease.id %></p>
+</div>
+<div class="content">
+    <div class="section">
+        <h3>Tenant Information</h3>
+        <div class="info-item"><strong>Name:</strong> <%= @tenant.name %></div>
+        <div class="info-item"><strong>Contact:</strong> <%= @tenant.contact %></div>
+        <div class="info-item"><strong>Emergency Contact:</strong> <%= @tenant.emergency_contact %></div>
+    </div>
+    <div class="section">
+        <h3>Property Information</h3>
+        <div class="info-item"><strong>Property:</strong> <%= @property.name %></div>
+        <div class="info-item"><strong>Address:</strong> <%= @property.address %></div>
+        <div class="info-item"><strong>Rent: </strong> ZK<%= @property.rent %></div>
+    </div>
+    <div class="section">
+        <h3>Lease Terms</h3>
+        <div class="info-grid">
+        <div>
+            <div class="info-item"><strong>Start Date:</strong> <%= @lease.start_date.strftime("%B %d, %Y") %></div>
+            <div class="info-item"><strong>End Date:</strong> <%= @lease.end_date.strftime("%B %d, %Y") %></div>
+            <div class="info-item"><strong>Payment Frequency:</strong> <%= @lease.payment_frequency.humanize %></div>
+        </div>
+        <div>
+            <div class="info-item"><strong>Monthly Rent:</strong> ZK<%= number_with_delimiter(@lease.rent_amount) %></div>
+            <div class="info-item"><strong>Security Deposit:</strong> ZK<%= number_with_delimiter(@lease.security_deposit) %></div>
+            <div class="info-item"><strong>Duration:</strong> <%= distance_of_time_in_words(@lease.start_date, @lease.end_date) %></div>
+        </div>
+        </div>
+    </div>
+
+    <div class="section" style="margin-top: 50px;">
+        <h3>Agreement Terms</h3>
+        <p>This lease agreement is entered into between the landlord and tenant for the above-mentioned property under the terms and conditions specified herein.</p>
+        
+        <div style="margin-top: 80px; display: flex; justify-content: space-between;">
+        <div>
+            <p>_________________________</p>
+            <p><strong>Landlord Signature</strong></p>
+            <p>Date: _______________</p>
+        </div>
+        <div>
+            <p>_________________________</p>
+            <p><strong>Tenant Signature</strong></p>
+            <p>Date: _______________</p>
+        </div>
+        </div>
+    </div>
+</div>
