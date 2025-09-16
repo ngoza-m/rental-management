@@ -12,6 +12,7 @@
                     <th>Contact</th>
                     <th>Emergency Contact</th>
                     <th> # </th>
+                    <th> # </th>
                 </tr>
                 </thead>
     <% @tenants.each do |tenant| %>
@@ -21,6 +22,12 @@
                 <td class="bg-white"> <%= tenant.contact %> </td>
                 <td class="bg-white"> <%= tenant.emergency_contact %> </td>
                 <td class="bg-white"> <%= link_to "View", tenant_path(tenant) %> </td>
+                <% if tenant.lease.nil? %>
+                    <td class="bg-white"> <%= link_to "Add Lease", new_tenant_lease_path(tenant) %> </td>
+                <% else %>
+                    <td class="bg-white"> <%= link_to "View Lease", tenant_lease_path(tenant, tenant.lease) %> | 
+                    <%= link_to "Download PDF", tenant_lease_path(tenant, tenant.lease, format: :pdf) %></td>
+                <% end %>
         </tr>
     <% end %>
 </table>

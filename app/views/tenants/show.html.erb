@@ -10,4 +10,9 @@
 <% if @tenant.landlord == current_user %>
     <p> Edit this tenant <%= link_to 'Edit', edit_tenant_path(@tenant) %></p>
     <p> Delete this tenant <%= link_to 'Delete', tenant_path(@tenant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
-<% end %>   
+    <% if @tenant.lease.nil? %>
+        <p> Create a lease for this tenant <%= link_to 'New Lease', new_tenant_lease_path(@tenant) %></p>
+    <% else %>
+        <p><%= link_to 'View Lease', tenant_lease_path(@tenant, @tenant.lease) %></p>
+    <% end %>
+<% end %>
