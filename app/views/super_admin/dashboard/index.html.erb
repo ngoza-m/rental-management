@@ -1,0 +1,23 @@
+<h2>Table for Landlords</h2>
+
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    <% @landlords.each do |landlord| %>
+        <tr>
+        <td><%= landlord.email %></td>
+        <td><%= landlord.approved? ? "Approved" : "Pending" %></td>
+        <td>
+            <% unless landlord.approved? %>
+            <%= link_to "Approve", approve_super_admin_landlord_path(landlord),
+                        method: :patch, data: { confirm: "Approve this landlord?" } %> |
+            <%= link_to "Reject", reject_super_admin_landlord_path(landlord),
+                        method: :delete, data: { confirm: "Reject this landlord?" } %>
+            <% end %>
+        </td>
+        </tr>
+    <% end %>
+</table>
