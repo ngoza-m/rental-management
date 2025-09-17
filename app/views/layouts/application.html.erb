@@ -22,6 +22,10 @@
     <div>
       <%= render "shared/flashes" %>
     </div>
+    <div>
+      <p> Log Out<%= link_to " here", destroy_user_session_path, method: :delete %> </p>
+      <p> Go to <%= link_to "Dashboard", send("#{current_user.role}_root_path") %> </p>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,14 @@
+<% if current_user.approved? %>
+    <h1>Welcome to your Landlord Dashboard</h1>
+    <p>Here you can manage your properties and view your leases.</p>
+    
+    <h2>Your Properties</h2>
+    <ul>
+        <% @properties.each do |property| %>
+        <li><%= property.address %> - <%= link_to 'View Details', landlord_property_path(property) %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <h1>Your account is pending approval</h1>
+    <p>Please wait for an administrator to approve your account.</p>
+<% end %>

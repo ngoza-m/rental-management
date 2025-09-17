@@ -18,4 +18,31 @@ Rails.application.routes.draw do
     resources :leases, only: [:new, :create, :show]
   end
   get "dashboard", to: "pages#dashboard"
+
+  namespace :super_admin do
+    resources :landlords, only: [ :index, :show, :update, :destroy ] do
+      member do
+        patch :approve
+        delete :reject
+      end
+    end
+    root to: "dashboard#index"
+  end
+
+  namespace :landlord do
+    resources :properties do
+      resources :leases do
+        resources :payments, only: [ :index, :show ]
+      end
+    end
+    root to: "dashboard#index"
+  end
+
+    resources :tenant do
+      resources :dashboard, only: [ :index, :show ]
+      resources :leases, only: [ :index, :show ] do
+        resources :payments, only: [ :index, :show ]
+      end
+      root to: "dashboard#index"
+    end
 end

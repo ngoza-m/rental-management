@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lease: one
+  tenant: one
+  amount: 1
+  paid_at: 2025-09-16
+  status: 1
+  transaction_id: MyString
+
+two:
+  lease: two
+  tenant: two
+  amount: 1
+  paid_at: 2025-09-16
+  status: 1
+  transaction_id: MyString
