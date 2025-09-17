@@ -43,7 +43,7 @@ module Landlord
     end
 
     def property_params
-      params.require(:property).permit(:name, :address, :description)
+      params.require(:property).permit(:name, :address, :description, :rent)
     end
   end
 end
