@@ -13,11 +13,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "properties#index"
-  # resources :properties
-  # resources :tenants do
-  #   resources :leases, only: [:new, :create, :show]
-  # end
-  # get "dashboard", to: "pages#dashboard"
+  resources :properties
+  resources :tenants do
+    resources :leases, only: [:new, :create, :show]
+  end
+  get "dashboard", to: "pages#dashboard"
 
   namespace :super_admin do
     resources :landlords, only: [ :index, :show, :update, :destroy ] do

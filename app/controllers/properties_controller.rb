@@ -5,9 +5,7 @@ class PropertiesController < ApplicationController
     @properties = Property.all
   end
 
-  def show
-
-  end
+  def show;  end
 
   def new
     @property = Property.new
@@ -23,12 +21,9 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit;  end
 
   def update
-
     if @property.update(property_params)
       redirect_to @property
     else
