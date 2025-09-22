@@ -4,9 +4,9 @@
     
     <h2>Your Properties</h2>
     <%= link_to "New Property", new_landlord_property_path, class: "btn btn-primary" %>
-    <table>
-        <thead>
-            <tr>
+    <table class="table table-bordered table-hover table-responsive mt-4">
+        <thead class="thead-dark">
+            <tr class="table-active">
             <th>Title</th>
             <th>Address</th>
             <th>Description</th>
@@ -16,9 +16,9 @@
         <tbody>
             <% @properties.each do |property| %>
             <tr>
-                <td><%= property.name %></td>
-                <td><%= property.address %></td>
-                <td><%= truncate(property.description, length: 50) %></td>
+                <td class="bg-white"><%= property.name %></td>
+                <td class="bg-white"><%= property.address %></td>
+                <td class="bg-white"><%= truncate(property.description, length: 50) %></td>
                 <td>
                 <%= link_to "Show", landlord_property_path(property) %> |
                 <%= link_to "Edit", edit_landlord_property_path(property) %> |
@@ -34,9 +34,9 @@
     <div style="margin-top: 100px;"></div>
 
     <h2>Your Leases</h2>
-    <table>
-        <thead>
-            <tr>
+    <table class="table table-bordered table-hover table-responsive mt-4">
+        <thead class="thead-dark">
+            <tr class="table-active">
             <th>Property</th>
             <th>Tenant</th>
             <th>Start Date</th>
@@ -48,11 +48,11 @@
         <tbody>
             <% @leases.each do |lease| %>
             <tr>
-                <td><%= lease.property.name %></td>
-                <td><%= lease.tenant.email %></td>
-                <td><%= lease.start_date %></td>
-                <td><%= lease.end_date %></td>
-                <td>ZK<%= lease.rent_amount %></td>
+                <td  class="bg-white"><%= lease.property.name %></td>
+                <td class="bg-white"><%= lease.tenant.email %></td>
+                <td class="bg-white"><%= lease.start_date %></td>
+                <td class="bg-white"><%= lease.end_date %></td>
+                <td class="bg-white">ZK<%= lease.rent_amount %></td>
                 <td>
                 <%= link_to "Show", landlord_property_lease_path(lease.property, lease) %> |
                 <%= link_to "Edit", edit_landlord_property_lease_path(lease.property, lease) %> |

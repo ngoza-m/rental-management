@@ -27,7 +27,17 @@ module Landlord
       end
     end
 
-    def show; end
+    def show
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: "lease_#{@lease.id}",
+                 layout: "pdf",
+                 page_size: "A4",
+                 margin: { top: 20, bottom: 20, left: 20, right: 20 }
+        end
+      end
+    end
 
     def edit; end
 

@@ -1,9 +1,7 @@
 <div class="header">
     <h1>LEASE AGREEMENT</h1>
-    <h2>Lease for <%= @property.name %></h2>
     <p>Lease ID: #<%= @lease.id %></p>
 </div>
-
 <div class="content">
     <div class="section">
         <h3>Tenant Information</h3>
@@ -29,13 +27,22 @@
         </div>
         </div>
     </div>
-    <% unless request.format.pdf? %>
-        <div class="section">
-            <div style="text-align: center; margin-top: 30px;">
-                <%= link_to "Download PDF", landlord_property_lease_path(@property, @lease, format: :pdf), class: "btn btn-primary" %>
-            </div>
+
+    <div class="section" style="margin-top: 50px;">
+        <h3>Agreement Terms</h3>
+        <p>This lease agreement is entered into between the landlord and tenant for the above-mentioned property under the terms and conditions specified herein.</p>
+        
+        <div style="margin-top: 80px; display: flex; justify-content: space-between;">
+        <div>
+            <p>_________________________</p>
+            <p><strong>Landlord Signature</strong></p>
+            <p>Date: _______________</p>
         </div>
-    <% end %>
-</div>    
-<%= link_to "Edit", edit_landlord_property_lease_path(@property, @lease) %> |
-<%= link_to "Back", landlord_property_path(@property) %>
+        <div>
+            <p>_________________________</p>
+            <p><strong>Tenant Signature</strong></p>
+            <p>Date: _______________</p>
+        </div>
+        </div>
+    </div>
+</div>
