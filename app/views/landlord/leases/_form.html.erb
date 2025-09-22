@@ -1,0 +1,38 @@
+<%= simple_form_for [:landlord, @property, @lease] do |f| %>
+
+    <% if @lease.errors.any? %>
+        <div id="error_explanation" class="error-message">
+        <p>Oops! Something went wrong!</p>
+        </div>
+    <% end %>
+
+    <div>
+        <%= f.label :tenant_id, "Tenant (user id)" %>
+        <%= f.number_field :tenant_id %>
+    </div>
+
+    <div>
+        <%= f.label :start_date %>
+        <%= f.date_field :start_date %>
+    </div>
+
+    <div>
+        <%= f.label :end_date %>
+        <%= f.date_field :end_date %>
+    </div>
+
+    <div>
+        <%#= f.label :rent_amount %>
+        <%= f.input :rent_amount %>
+    </div>
+
+    <div>
+        <%#= f.label :security_deposit %>
+        <%= f.input :security_deposit %>
+    </div>
+
+
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>

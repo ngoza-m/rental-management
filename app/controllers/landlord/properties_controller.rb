@@ -9,11 +9,14 @@ module Landlord
     def show; end
 
     def new
-      @property = current_user.properties.new
+      @property = current_user.properties.build
+      # Alternatively, you can use:
+      # @property = Property.new
+      # @property.landlord = current_user
     end
 
     def create
-      @property = current_user.properties.new(property_params)
+      @property = current_user.properties.build(property_params)
       if @property.save
         redirect_to landlord_property_path(@property), notice: "Property created successfully."
       else
@@ -39,7 +42,7 @@ module Landlord
     private
 
     def set_property
-      @property = current_user.properties.find(params[:id])
+      @property = Property.find(params[:id])
     end
 
     def property_params

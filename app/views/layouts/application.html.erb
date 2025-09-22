@@ -23,8 +23,13 @@
       <%= render "shared/flashes" %>
     </div>
     <div>
-      <p> Log Out<%= link_to " here", destroy_user_session_path, method: :delete %> </p>
-      <p> Go to <%= link_to "Dashboard", send("#{current_user.role}_root_path") %> </p>
+      <% if user_signed_in? %>
+        <p> Signed in as <strong><%= current_user.email %></strong> </p>
+        <p> Log Out<%= link_to " here", destroy_user_session_path, data: { turbo_method: :delete } %> </p>
+        <p> Go to <%= link_to "Dashboard", send("#{current_user.role}_root_path") %> </p>
+      <% else %>
+        <p> You are not signed in. Please <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> </p>
+      <% end %>
     </div>
     <%= yield %>
   </body>

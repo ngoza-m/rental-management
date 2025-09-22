@@ -15,8 +15,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.select :role,
-                User.roles.except(:super_admin).map { |key, value| [key.capitalize, value] } %>
+    <%= f.input :role,
+                collection: User.roles.except(:super_admin).keys.map { |role| [role.capitalize, role] },
+                as: :select,
+                required: true %>
   </div>
 
   <div class="form-actions">

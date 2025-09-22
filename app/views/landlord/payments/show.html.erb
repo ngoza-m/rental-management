@@ -1,0 +1,9 @@
+<h1>Payment Details</h1>
+
+<p><strong>Amount:</strong> <%= number_to_currency(@payment.amount_cents.to_f / 100) %></p>
+<p><strong>Paid At:</strong> <%= @payment.paid_at %></p>
+<p><strong>Status:</strong> <%= @payment.status %></p>
+<p><strong>Transaction ID:</strong> <%= @payment.transaction_id %></p>
+
+
+<%= link_to "Back", landlord_property_lease_payments_path(@lease.property, @lease) %>

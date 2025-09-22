@@ -3,11 +3,68 @@
     <p>Here you can manage your properties and view your leases.</p>
     
     <h2>Your Properties</h2>
-    <ul>
-        <% @properties.each do |property| %>
-        <li><%= property.address %> - <%= link_to 'View Details', landlord_property_path(property) %></li>
-        <% end %>
-    </ul>
+    <%= link_to "New Property", new_landlord_property_path, class: "btn btn-primary" %>
+    <table>
+        <thead>
+            <tr>
+            <th>Title</th>
+            <th>Address</th>
+            <th>Description</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @properties.each do |property| %>
+            <tr>
+                <td><%= property.name %></td>
+                <td><%= property.address %></td>
+                <td><%= truncate(property.description, length: 50) %></td>
+                <td>
+                <%= link_to "Show", landlord_property_path(property) %> |
+                <%= link_to "Edit", edit_landlord_property_path(property) %> |
+                <%= link_to "Delete", [:landlord, property],
+                                method: :delete,
+                                data: { confirm: "Are you sure?" } %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 100px;"></div>
+
+    <h2>Your Leases</h2>
+    <table>
+        <thead>
+            <tr>
+            <th>Property</th>
+            <th>Tenant</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Rent</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @leases.each do |lease| %>
+            <tr>
+                <td><%= lease.property.name %></td>
+                <td><%= lease.tenant.email %></td>
+                <td><%= lease.start_date %></td>
+                <td><%= lease.end_date %></td>
+                <td>ZK<%= lease.rent_amount %></td>
+                <td>
+                <%= link_to "Show", landlord_property_lease_path(lease.property, lease) %> |
+                <%= link_to "Edit", edit_landlord_property_lease_path(lease.property, lease) %> |
+                <%= link_to "Delete", [ :landlord, lease.property, lease ],
+                                method: :delete,
+                                data: { confirm: "Are you sure?" } %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
 <% else %>
     <h1>Your account is pending approval</h1>
     <p>Please wait for an administrator to approve your account.</p>

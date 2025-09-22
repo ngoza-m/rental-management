@@ -1,0 +1,10 @@
+<h1>Lease for <%= @property.name %></h1>
+
+<p><strong>Tenant:</strong> <%= @lease.tenant&.email %></p>
+<p><strong>Start Date:</strong> <%= @lease.start_date %></p>
+<p><strong>End Date:</strong> <%= @lease.end_date %></p>
+<p><strong>Rent:</strong> ZK<%= @lease.rent_amount %></p>
+
+
+<%= link_to "Edit", edit_landlord_property_lease_path(@property, @lease) %> |
+<%= link_to "Back", landlord_property_path(@property) %>

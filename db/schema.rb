@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_16_225211) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_22_000836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,8 +81,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_16_225211) do
   end
 
   add_foreign_key "leases", "properties"
-  add_foreign_key "leases", "tenants"
   add_foreign_key "leases", "users", column: "landlord_id"
+  add_foreign_key "leases", "users", column: "tenant_id"
   add_foreign_key "payments", "leases"
   add_foreign_key "payments", "tenants"
   add_foreign_key "properties", "users", column: "landlord_id"

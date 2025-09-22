@@ -1,0 +1,25 @@
+<h1><%= @property.name %></h1>
+
+<p><strong>Address:</strong> <%= @property.address %></p>
+<p><strong>Description:</strong> <%= @property.description %></p>
+<p><strong>Rent:</strong> ZK<%= @property.rent %></p>
+
+<% if @property.leases.any? %>
+    <h2>Leases</h2>
+    <ul>
+        <% @property.leases.each do |lease| %>
+        <li>
+            <strong>Tenant:</strong> <%= lease.tenant&.email %> |
+            <strong>Start Date:</strong> <%= lease.start_date %> |
+            <strong>End Date:</strong> <%= lease.end_date %> |
+            <strong>Rent:</strong> ZK<%= lease.rent_amount %> |
+            <%= link_to "View Lease", landlord_property_lease_path(@property, lease) %>
+        </li>
+        <% end %>
+    </ul>
+<% else %>
+    <p><%= link_to "Add Lease", new_landlord_property_lease_path(@property), class: "btn btn-primary" %></p>
+<% end %>
+
+<%= link_to "Edit", edit_landlord_property_path(@property) %> |
+<%= link_to "Back", landlord_root_path %>

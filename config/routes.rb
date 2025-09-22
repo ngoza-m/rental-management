@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   root "properties#index"
   resources :properties
   resources :tenants do
-    resources :leases, only: [:new, :create, :show]
+    resources :leases, only: [ :new, :create, :show ]
   end
   get "dashboard", to: "pages#dashboard"
 
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   namespace :landlord do
     resources :properties do
       resources :leases do
-        resources :payments, only: [ :index, :show ]
+        resources :payments, only: [ :index, :show, :new, :create ]
       end
     end
     root to: "dashboard#index"

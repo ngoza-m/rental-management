@@ -2,7 +2,9 @@ module SuperAdmin
   class LandlordsController < BaseController
     def index
       @landlords = User.landlord.where(approved: false)
+      @landlords_all = User.landlord.all
     end
+
     def approve
       @landlord = User.find(params[:id])
       @landlord.update(approved: true)
